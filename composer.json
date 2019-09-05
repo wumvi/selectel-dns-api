@@ -1,0 +1,20 @@
+{
+    "name": "wumvi/dns-api",
+    "authors": [
+        {
+            "name": "Vitaliy Kozlenko",
+            "email": "vk@wumvi.com"
+        }
+    ],
+    "require": {
+        "wumvi/lightweight-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Wumvi\\DnsApi\\": "src"
+        }
+    },
+    "license": "proprietary"
+}

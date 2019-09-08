@@ -7,7 +7,7 @@
         }
     ],
     "require": {
-        "wumvi/lightweight-curl": "*",
+        "wumvi/lightweight-curl": "1.27",
         "ext-json": "*",
         "ext-mbstring": "*"
     },

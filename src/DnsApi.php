@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Wumvi\DnsApi;
 
 use LightweightCurl\Curl;
@@ -20,7 +19,7 @@ class DnsApi
         $this->curl = new Curl();
     }
 
-    public function call(string $part, int $method = Request::METHOD_GET, array $requestData = []): array
+    public function call(string $part, string $method = Request::METHOD_GET, array $requestData = []): array
     {
         $request = new Request();
         $request->setUrl($this->apiUrl . $part);

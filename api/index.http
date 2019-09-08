@@ -1,0 +1,41 @@
+# Возвращает список добавленных доменов
+GET {{api-url}}
+Accept: application/json
+X-Token: {{token}}
+
+###
+
+# Добавляет новый домен
+POST {{api-url}}
+Content-Type: application/json
+X-Token: {{token}}
+
+{
+  "name": "youren.ru"
+}
+
+####
+
+# Возвращает инфу по домену по его ID
+GET {{api-url}}194532
+X-Token: {{token}}
+
+###
+
+# Возврает инфу по домену
+DELETE {{api-url}}194532
+X-Token: {{token}}
+
+###
+
+# Возвращает инфу по домену по его названию
+GET {{api-url}}youren.ru
+X-Token: {{token}}
+
+###
+
+# Возвращает инфу по домену по его названию
+GET {{api-url}}194532/export
+ X-Token: {{token}}
+
+###

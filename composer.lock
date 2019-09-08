@@ -4,21 +4,25 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "20060a6121d9186b1dcfd11ef1035b26",
+    "content-hash": "074ccc88f5b6d7040acc8576003fefe3",
     "packages": [
         {
             "name": "wumvi/lightweight-curl",
-            "version": "v1.0.23",
+            "version": "v1.27",
             "source": {
                 "type": "git",
-                "url": "https://github.com/wumvi/core.lightweight-curl.git",
-                "reference": "67ce23a1a5f5915ae40323e1e50ae6f308469186"
+                "url": "https://github.com/wumvi/lightweight-curl.git",
+                "reference": "f410327343df5396f8ee71dc1e1d134e9b46b2b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wumvi/core.lightweight-curl/zipball/67ce23a1a5f5915ae40323e1e50ae6f308469186",
-                "reference": "67ce23a1a5f5915ae40323e1e50ae6f308469186",
+                "url": "https://api.github.com/repos/wumvi/lightweight-curl/zipball/f410327343df5396f8ee71dc1e1d134e9b46b2b8",
+                "reference": "f410327343df5396f8ee71dc1e1d134e9b46b2b8",
                 "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*"
             },
             "type": "library",
             "autoload": {
@@ -34,7 +38,7 @@
                 }
             ],
             "description": "LightweightCurl Curl library",
-            "time": "2019-07-25T13:14:53+00:00"
+            "time": "2019-09-07T23:53:55+00:00"
         }
     ],
     "packages-dev": [],

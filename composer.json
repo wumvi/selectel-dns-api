@@ -16,5 +16,5 @@
             "Wumvi\\DnsApi\\": "src"
         }
     },
-    "license": "proprietary"
+    "license": "MIT"
 }

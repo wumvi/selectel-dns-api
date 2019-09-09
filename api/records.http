@@ -1,4 +1,4 @@
-GET {{api-url}}194532/records/
+GET {{api-url}}194620/records/
 X-Token: {{token}}
 
 ###
@@ -9,7 +9,7 @@ X-Token: {{token}}
 ###
 
 # Устанавливает TXT запись
-POST {{api-url}}194532/records/
+POST {{api-url}}194620/records/
 Content-Type: application/json
 X-Token: {{token}}
 
@@ -22,43 +22,59 @@ X-Token: {{token}}
 ####
 
 # Устанавливает CNAME запись
-POST {{api-url}}194532/records/
+POST {{api-url}}194620/records/
 Content-Type: application/json
 X-Token: {{token}}
 
 {
-  "name": "test.youren.ru",
-  "type": "CNAME",
-  "content": "sysfile.wumvi.com"
+  "name": "test2.youren.ru",
+  "type": "A",
+  "content": "80.87.198.52",
+  "ttl": 3000
 }
 
 ###
 
 
 # Устанавливает CNAME запись
-PUT {{api-url}}194532/records/1786708
+PUT {{api-url}}194620/records/1816741
 Content-Type: application/json
 X-Token: {{token}}
 
 {
   "name": "test.youren.ru",
-  "type": "CNAME",
-  "content": "sysauth.wumvi.com"
+  "type": "TXT",
+  "content": "test=3"
 }
 
 ###
 
-# Устанавливает CNAME запись
+#
 PATCH {{api-url}}youren.ru/records/batch_update
 Content-Type: application/json
 X-Token: {{token}}
 
-[
-  {
-    "name": "test.youren.ru",
-    "type": "CNAME",
-    "content": "sysauth.wumvi.com"
-  }
-]
+{
+  "update": [
+    {
+      "name": "test3.youren.ru",
+      "type": "CNAME",
+      "content": "sysfile.wumvi.com",
+      "id": 1808888
+    }
+  ],
+  "create": [
+    {
+      "name": "@",
+      "type": "TXT",
+      "content": "has=1"
+    }
+  ],
+  "delete": [
+    {
+      "id": 1816729
+    }
+  ]
+}
 
 ###

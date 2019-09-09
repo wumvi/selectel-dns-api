@@ -1,13 +1,18 @@
 <?php
+declare(strict_types=1);
 
 namespace Wumvi\DnsApi;
 
+use LightweightCurl\ContentType;
 use LightweightCurl\Curl;
 use LightweightCurl\Request;
+use Wumvi\DnsApi\Exception\DnsApiException;
 
-class DnsApi
+class DnsApi implements IDnsApi
 {
+    public const RESPONSE_SUCCESS_CODE = 200;
     public const SELECTEL_API = 'https://api.selectel.ru/domains/v1/';
+
     private $token;
     private $apiUrl;
     private $curl;
@@ -19,43 +24,39 @@ class DnsApi
         $this->curl = new Curl();
     }
 
-    public function call(string $part, string $method = Request::METHOD_GET, array $requestData = []): array
-    {
+    public function call(
+        string $path,
+        string $method = Request::METHOD_GET,
+        array $requestData = [],
+        bool $isRawResponse = false,
+        int $successResponse = self::RESPONSE_SUCCESS_CODE
+    ): array {
         $request = new Request();
-        $request->setUrl($this->apiUrl . $part);
-        $request->setContentType('application/json');
+        $request->setUrl($this->apiUrl . $path);
+        $request->setContentType(ContentType::JSON);
         $request->addHeader('X-Token', $this->token);
+        $request->addHeader('Expect', '');
         $request->setMethod($method);
+        // $request->setFlagVerbose(true);
 
-        if ($requestData) {
-            $request->setData($requestData);
+        if (!empty($requestData)) {
+            $request->setData(json_encode($requestData));
         }
 
-        $rawResponse = $this->curl->call($request);
-        if ($rawResponse->getHttpCode() !== 200) {
-            throw new DnsApiException('Wrong code of response: ' . $rawResponse->getHttpCode());
+        $response = $this->curl->call($request);
+        if ($response->getHttpCode() !== $successResponse) {
+            throw new DnsApiException($response->getData(), 'Wrong code of response: ' . $response->getHttpCode());
         }
 
-        $json = json_decode($rawResponse->getData(), true);
+        if ($isRawResponse) {
+            return ['raw' => $response->getData()];
+        }
+
+        $json = json_decode($response->getData(), true);
         if (empty($json)) {
-            throw new DnsApiException(json_last_error_msg());
+            throw new DnsApiException('', json_last_error_msg(), DnsApiException::WRONG_JSON);
         }
 
         return $json;
-    }
-
-    public function getList(): array
-    {
-        return $this->call('');
-    }
-
-    public function addNewDomain(string $name): array
-    {
-        return $this->call('', Request::METHOD_POST, ['name' => $name]);
-    }
-
-    public function removeDomain()
-    {
-
     }
 }

@@ -26,7 +26,7 @@ class ManageDomain implements IManageDomain
      *
      * @return array
      */
-    public function add(string $domain): array
+    public function create(string $domain): array
     {
         return $this->api->call('', Request::METHOD_POST, ['name' => $domain]);
     }

@@ -6,7 +6,7 @@ interface IManageDomain
 {
     public function list(): array;
 
-    public function add(string $domain): array;
+    public function create(string $domain): array;
 
     public function get($domain): array;
 

@@ -1,0 +1,4 @@
+GET {{api-url}}ptr/
+X-Token: {{token}}
+
+###

@@ -35,7 +35,7 @@ class ManageRecord implements IManageRecord
      *
      * @return array
      */
-    public function set(int $domainId, IRecord $record): array
+    public function create(int $domainId, IRecord $record): array
     {
         return $this->api->call(
             $domainId . '/records/',
